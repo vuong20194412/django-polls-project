@@ -1,0 +1,19 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'polls/css/style.css' %}">
+
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <li>
+            <a href="{% url 'polls:detail' question.id %}">
+                {{ question.question_text }}, {{ question.publication_date|date:"d/m/Y H:i:s" }}
+            </a>
+        </li>
+    {% empty %}
+        <h1>No polls are available.</h1>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}

@@ -1,0 +1,43 @@
+# add field image to all tables
+use pycharm to create a new project
+py -m pip install django
+py -m pip install --upgrade pip
+py -m django --version
+django-admin startproject mysite #name of project
+cd mysite
+py manage.py runserver
+py manage.py startapp polls
+type nul > exams/urls.py
+# custom users model need create before 'migrate'
+#py manage.py migrate
+
+#TIME_ZONE = "Asia/Ho_Chi_Minh"
+#!! when client to server:
+#    client datetime
+#        --convert--> utc datetime
+#            --send--> server
+#                --convert--> server datetime
+#!! when server to client:
+#    sever datetime
+#        --convert--> utc datetime -> form
+#            --send--> client
+#                --convert--> client datetime
+
+TIME_ZONE = 'UTC'
+!! when client to server:
+    client datetime
+        --convert--> utc datetime
+            --send--> server
+!! when server to client:
+    sever datetime -> form
+       --send--> client
+          --convert--> client datetime
+
+py manage.py makemigrations polls
+# custom users model need create before 'migrate'
+py manage.py migrate
+
+py manage.py createsuperuser
+
+mkdir polls\templates\polls
+type nul > polls\templates\polls\index.html
